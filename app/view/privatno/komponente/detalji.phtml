@@ -1,0 +1,45 @@
+<fieldset class="fieldset">
+    <legend>Popunite tražene podatke</legend>
+
+    <?php echo Utility::inputText(
+        isset($greska) ? $greska : null,'naziv','Naziv komponente');?>
+    
+    <label for="opis">Opis</label>
+    <select name="opis" id="opis">
+        <option value="0">Odaberite opis</option>
+        <?php foreach($opisi as $opis): ?>
+            <option 
+            
+            <?php echo App::param("opis")==$opis->sifra ? 'selected="selected"' : ''; ?>
+            
+            
+            value="<?php echo $opis->sifra; ?>">
+                <?php echo $opis->naziv; ?>
+            </option>
+    <?php endforeach; ?>
+    </select>
+    
+
+    <label for="proizvodac">Proizvođač</label>
+    <select name="proizvodac" id="proizvodac">
+        <option value="0">Odaberite proizvođača</option>
+        <?php foreach($proizvodaci as $proizvodac): ?>
+            <option 
+            
+            <?php echo App::param("proizvodac")==$proizvodac->sifra ? 'selected="selected"' : ''; ?>
+            
+             value="<?php echo $proizvodac->sifra; ?>">
+                <?php echo $proizvodac->naziv; ?>
+            </option>
+    <?php endforeach; ?>
+    </select>
+
+    <?php echo Utility::inputText(
+        isset($greska) ? $greska : null,'cijena','Cijena');?>
+    
+    <label for="cijena">Cijena</label>
+    <input type="number" name="cijena" id="cijena" 
+    value="<?php echo App::param("cijena") ?>"/>
+
+</fieldset>
+<hr />

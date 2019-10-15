@@ -1,0 +1,14 @@
+<fieldset class="fieldset">
+    <legend>Popunite tražene podatke</legend>
+
+    <?php echo Utility::inputText(
+        isset($greska) ? $greska : null,'naziv','Naziv');?>
+
+    <?php echo Utility::inputText(
+        isset($greska) ? $greska : null,'opis','Opis');?>
+
+    <?php echo Utility::inputText(
+        isset($greska) ? $greska : null,'cijena','Cijena');?>
+
+</fieldset>
+<hr />

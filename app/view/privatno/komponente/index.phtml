@@ -1,0 +1,47 @@
+<a href="<?php echo App::config("url") ?>komponente/pripremaNovi" 
+class=" button expanded">
+<i class="fas fa-plus-square"></i>
+Dodaj novu grupu</a>
+
+<table id="tablicaKomponente">
+  <thead>
+    <tr>
+     <th>Naziv</th>
+     <th>Opis</th>
+     <th>Proizvodac</th>
+     <th>Cijena</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($komponente as $komponenta): ?>
+      <tr>
+        <td><?php echo $komponenta->naziv?></td>
+        <td><?=$komponenta->Opis?></td>
+        <td><?php echo $komponenta->Proizvodac?></td>
+        <td><?php echo $komponenta->Cijena?></td>
+        <td>
+        <a title="Promjeni <?php echo $komponenta->naziv ?>" 
+            href="<?php 
+            echo App::config("url") 
+            ?>komponenta/pripremaPromjeni/<?php echo $komponenta->sifra ?>">
+            <i class="fas fa-edit fa-2x" style="color: orange"></i>
+        </a>
+        <?php if($komponenta->ukupno==0): ?>
+            <a title="Obriši <?php echo $komponenta->naziv ?>" 
+                onclick="return confirm('Sigurno obrisati <?php echo $komponenta->naziv ?>?');"
+                href="<?php 
+                echo App::config("url") 
+                ?>komponenta/brisanje/<?php echo $komponenta->sifra ?>">
+                <i class="fas fa-trash fa-2x" style="color: red"></i>
+            </a>
+    <?php else:?>
+            <i title="Ne može se obrisati jer je dio konfiguracije" 
+            class="fas fa-trash fa-2x" style="color: gray"></i>
+
+        <?php endif;?>
+        
+        </td>
+      </tr>
+    <?php endforeach;?>
+  </tbody>
+</table>

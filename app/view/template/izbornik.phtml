@@ -1,0 +1,70 @@
+<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="responsive-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li<?php echo Utility::active('/'); //ne radi ?>>
+        <a href="<?php echo App::config("url") ?>">
+            <?php echo App::config("nazivApp"); ?>
+        </a>
+      </li>
+
+      <?php if(isset($_SESSION["autoriziran"])): ?>
+        <li<?php echo Utility::active('/index/nadzornaPloca'); ?>>
+          <a href="<?php echo App::config("url") ?>index/nadzornaPloca"><i class="fas fa-sliders-h"></i></a>
+        </li>
+        <li>
+        <?php if($_SESSION["autoriziran"]->uloga==="oper"): ?>
+          <ul class="menu vertical">
+            <li<?php echo Utility::active('/komponenta/index'); ?>>
+              <a href="<?php echo App::config("url") ?>komponenta/index">Komponente</a>
+            </li>
+            <li<?php echo Utility::active('/konfiguracija/index'); ?>>
+              <a href="<?php echo App::config("url") ?>konfiguracija/index">Konfiguracije</a>
+            </li>
+            <li<?php echo Utility::active('/proizvodac/index'); ?>>
+              <a href="<?php echo App::config("url") ?>proizvodac/index">Proizvođači</a>
+            </li>
+            <li<?php echo Utility::active('/index/era'); ?>>
+             <a href="<?php echo App::config("url") ?>index/era">Era dijagram</a>
+           </li>
+          </ul>
+        </li>
+        <?php endif;?>
+      <?php if($_SESSION["autoriziran"]->uloga==="admin"): ?>
+        <li<?php echo Utility::active('/operater/index'); ?>>
+          <a href="<?php echo App::config("url") ?>operater/index">Operateri</a>
+        </li>
+      <?php endif;?>
+      <li<?php echo Utility::active('/index/era'); ?>>
+          <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+        </li>
+      <?php endif;?>
+
+      <li<?php echo Utility::active('/index/onama'); ?>>
+        <a href="<?php echo App::config("url") ?>index/onama">O nama</a>
+      </li>
+      <li<?php echo Utility::active('/index/kontakt'); ?>>
+        <a href="<?php echo App::config("url") ?>index/kontakt">Kontakt</a>
+      </li> 
+      <li<?php echo Utility::active('/index/era'); ?>>
+          <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+        </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li>
+      <?php if(isset($_SESSION["autoriziran"])): ?>
+        <a href="<?php echo App::config("url") ?>index/logout">Odjava
+        <?php echo $_SESSION["autoriziran"]->imePrezime;?></a>
+      <?php else:?>
+        <a href="<?php echo App::config("url") ?>index/login">Prijava</a>
+      <?php endif;?>
+      </li>
+    </ul>
+  </div>
+</div>

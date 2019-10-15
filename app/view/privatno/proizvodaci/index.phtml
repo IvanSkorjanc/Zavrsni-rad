@@ -1,0 +1,46 @@
+<a href="<?php echo App::config("url") ?>proizvodac/pripremaNovi" 
+class=" button expanded">
+<i class="fas fa-plus-square"></i>
+Dodaj novog proizvođača</a>
+
+<div class="grid-container">
+<div class="grid-x">
+    <?php foreach($proizvodaci as $proizvodac): ?>
+        <div class="large-4 medium-6 small-12 column">
+            <ul class="pricing-table">
+                <li class="title"><?php echo $proizvodac->naziv?></li>
+                <li class="price"><?php echo $proizvodac->zemlja?></li>
+                <li>
+                    <img src="<?php 
+                        echo App::config("url") 
+                        ?>public/img/nepoznataOsoba.png" alt="<?php echo $proizvodac->naziv ?>"><hr />
+                    <a title="Promjeni <?php echo $proizvodac->naziv ?>" 
+                        href="<?php 
+                        echo App::config("url") 
+                        ?>proizvodac/pripremaPromjeni/<?php echo $proizvodac->sifra ?>">
+                        <i class="fas fa-edit fa-2x" style="color: orange"></i>
+                    </a>
+                    <?php if($proizvodac->ukupno==0): ?>
+                        <a title="Obriši <?php echo $proizvodac->naziv?>" 
+                            onclick="return confirm('Sigurno obrisati <?php echo $proizvodac->naziv?>');"
+                            href="<?php 
+                            echo App::config("url") 
+                            ?>proizvodac/brisanje/<?php echo $proizvodac->sifra ?>">
+                            <i class="fas fa-trash fa-2x" style="color: red"></i>
+                        </a>
+                    <?php else:?>
+                        <i title="Ne može se obrisati" 
+                        class="fas fa-trash fa-2x" style="color: gray"></i>
+                    <?php endif;?>
+
+                </li>
+            </ul>
+        </div>
+    <?php endforeach;?>
+</div>
+</div>
+
+
+
+
+
