@@ -1,2 +1,0 @@
-# Zavrsni-rad
-Pokušaj završnog
